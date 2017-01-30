@@ -1,0 +1,35 @@
+﻿/// <reference path="../angular.js" />
+/// <reference path="../IntegritasApp.js" />
+/// <reference path="../Services/ProductService.js" />
+
+IntegritasApp.controller("HomeController", function ($scope, ProductApi, ShoppingCartApi) {
+
+    getProducts();
+    
+    function getProducts() {
+        ProductApi.getProducts().success(function (data) {
+            $scope.products = data;
+        })
+        .error(function (error) {
+            $scope.status = 'Could not load data: ' + error.message;
+        });
+    };
+
+    $scope.AddToCart = function (product) {
+        var productToAdd = {
+            'Id': product.Id,
+            'Name': product.Name,
+            'CartNumber': $scope.cartNumber,
+        };
+
+        ShoppingCartApi.addProductToCart(productToAdd)
+        .success(function (response) {
+            alert('Product added to cart.');
+            $scope.id = undefined;
+            $scope.name = undefined;
+        })
+        .error(function (response) {
+            alert('Error on adding product to cart.');
+        });
+    };
+});

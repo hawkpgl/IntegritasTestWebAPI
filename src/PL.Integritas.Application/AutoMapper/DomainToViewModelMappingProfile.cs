@@ -13,7 +13,9 @@ namespace PL.Integritas.Application.AutoMapper
 
         public DomainToViewModelMappingProfile()
         {
-            this.CreateMap<EntityBase, EntityBaseViewModel>();
+            this.CreateMap<EntityBase, EntityBaseViewModel>()
+                .ForMember(m => m.ValidationResult,
+                             vm => vm.MapFrom(src => src.ValidationResult));
 
             this.CreateMap<Product, ProductViewModel>();
 

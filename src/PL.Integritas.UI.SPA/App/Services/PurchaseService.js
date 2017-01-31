@@ -1,19 +1,20 @@
-﻿/// <reference path="../angular.js" />
+﻿/// <reference path="../../Scripts/angular.js" />
+(function () {
+    var PurchaseService = angular.module('PurchaseService', []);
 
-var PurchaseService = angular.module('PurchaseService', []);
+    PurchaseService.factory('PurchaseApi', function ($http) {
 
-PurchaseService.factory('PurchaseApi', function ($http) {
+        var urlBase = "http://localhost:3998/api";
+        var PurchaseApi = {};
 
-    var urlBase = "http://localhost:3998/api";
-    var PurchaseApi = {};
+        PurchaseApi.getPurchases = function () {
+            return $http.get(urlBase + '/Purchase');
+        };
 
-    PurchaseApi.getPurchases = function () {
-        return $http.get(urlBase + '/Purchase');
-    };
+        PurchaseApi.finishPurchase = function (purchaseToAdd) {
+            return $http.post(urlBase + '/Purchase', purchaseToAdd)
+        }
 
-    PurchaseApi.finishPurchase = function (purchaseToAdd) {
-        return $http.post(urlBase + '/Purchase', purchaseToAdd)
-    }
-
-    return PurchaseApi;
-});
+        return PurchaseApi;
+    });
+})();

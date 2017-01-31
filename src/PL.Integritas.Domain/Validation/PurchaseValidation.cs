@@ -14,7 +14,7 @@ namespace PL.Integritas.Domain.Validation
 
             base.Add("purchaseHasShoppingCartValid", new Rule<Purchase>(purchaseHasShoppingCartValid, "The purchase must have a shopping cart."));
             base.Add("purchaseHasShippingInfoValid", new Rule<Purchase>(purchaseHasShippingInfoValid, "The purchase must have a minimal shipping information."));
-            base.Add("purchaseHasCreditCardValid", new Rule<Purchase>(purchaseHasCreditCardValid, "The purchase must have a credit card number."));
+            base.Add("purchaseHasCreditCardValid", new Rule<Purchase>(purchaseHasCreditCardValid, "The purchase must have a credit card holder's name."));
         }
     }
 }

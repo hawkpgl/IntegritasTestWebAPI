@@ -1,10 +1,10 @@
-﻿/// <reference path="../angular.js" />
+﻿/// <reference path="../../Scripts/angular.js" />
 
 var IntegritasApp = angular.module("IntegritasApp", ['ngRoute', 'ProductService', 'ShoppingCartService', 'PurchaseService']);
 
 IntegritasApp.config(['$routeProvider',
     function ($routeProvider) {
-        
+
         $routeProvider.
             when('/Home', {
                 templateUrl: 'App/Views/home.html',
@@ -39,7 +39,13 @@ IntegritasApp.run(function ($rootScope, $location, $route) {
 
         var currentPath = current.split('#')[1];
 
-        if (nextRoute.restricted && nextRoute.restricted !== currentPath) {
+        var restricted = false;
+
+        if (nextRoute != undefined) {
+            restricted = nextRoute.restricted;
+        }
+
+        if (restricted && nextRoute.restricted !== currentPath) {
 
             $location.path('/');
             alert('You cannot access payment this way.');

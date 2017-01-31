@@ -15,11 +15,11 @@ namespace PL.Integritas.Application.ViewModels
         public int CartNumber { get; set; }
 
         public Int64 ShoppingCartId { get; set; }
-
+        
+        [Required(ErrorMessage = "The card holder's name is required.")]
+        [MaxLength(50, ErrorMessage = "Maximum of {0} digits.")]
         public string CardHolderName { get; set; }
 
-        [Required(ErrorMessage = "The card number is required.")]
-        [MaxLength(16, ErrorMessage = "Maximum of {0} digits.")]
         public string CardNumber { get; set; }
 
         public int CardExpiryMonth { get; set; }

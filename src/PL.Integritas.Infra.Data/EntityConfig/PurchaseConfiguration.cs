@@ -10,10 +10,10 @@ namespace PL.Integritas.Infra.Data.EntityConfig
             HasKey(p => p.Id);
 
             Property(p => p.CardHolderName)
+                .IsRequired()
                 .HasMaxLength(50);
 
             Property(p => p.CardNumber)
-                .IsRequired()
                 .HasMaxLength(16);
 
             Property(p => p.CardExpiryMonth);

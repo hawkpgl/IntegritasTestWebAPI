@@ -7,7 +7,7 @@ namespace PL.Integritas.Domain.Specification.PurchaseSpecification
     {
         public bool IsSatisfiedBy(Purchase purchase)
         {
-            return !string.IsNullOrEmpty(purchase.CardNumber);
+            return !string.IsNullOrEmpty(purchase.CardHolderName);
         }
     }
 }
